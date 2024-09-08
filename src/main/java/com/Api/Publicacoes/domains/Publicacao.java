@@ -1,5 +1,6 @@
 package com.Api.Publicacoes.domains;
 
+import com.Api.Publicacoes.dtos.DadosCriacaoPublicacao;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,7 +28,7 @@ public class Publicacao {
 
     private Usuario usuarioAutor;
 
-    private int curtidas;
+    private int curtida;
 
     private int naoGostei;
 
@@ -35,7 +36,19 @@ public class Publicacao {
 
     private int visualizacoes;
 
-
     private List<Comentario> comentarios;
 
+    public Publicacao(DadosCriacaoPublicacao dados){
+        this.titulo = dados.titulo();
+        this.usuarioAutor = dados.usuarioAutor();
+        this.comentarios = dados.comentarios();
+        this.corpo = dados.corpo();
+        this.curtida = dados.curtida();
+        this.naoGostei = dados.naoGostei();
+        this.dataDeCriacao = dados.dataDeCriacao();
+        this.visualizacoes = dados.visualizacoes();
+    }
+
+    public Publicacao() {
+    }
 }
